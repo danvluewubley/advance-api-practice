@@ -16,7 +16,7 @@ app.use(morgan("tiny"));
 app.use(helmet());
 
 const corsOptions = {
-  origin: "http://localhost:5174",
+  origin: "http://localhost:3001",
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -26,6 +26,6 @@ app.use(limiter);
 app.use("/api", apiRouter);
 app.use(globalErrorHandler);
 
-app.listen(3001, () => {
-  console.log("Connected to server on port 3001");
+app.listen(3002, () => {
+  console.log("Connected to server on port 3002");
 });

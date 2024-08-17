@@ -1,13 +1,15 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function Signup() {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/auth/signup",
+        "http://localhost:3002/api/auth/login",
         {
           email: email,
           password: password,
@@ -37,10 +39,10 @@ function Signup() {
         onChange={(event) => setPassword(event.target.value)}
       />
       <button type="submit" onClick={handleLogin}>
-        Signup
+        Login
       </button>
     </div>
   );
 }
 
-export default Signup;
+export default Login;
