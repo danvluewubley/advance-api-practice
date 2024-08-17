@@ -14,7 +14,13 @@ app.use(cookieParser());
 
 app.use(morgan("tiny"));
 app.use(helmet());
-app.use(cors());
+
+const corsOptions = {
+  origin: "http://localhost:5174",
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(limiter);
 
 app.use("/api", apiRouter);
