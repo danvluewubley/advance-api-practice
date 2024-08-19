@@ -49,8 +49,6 @@ const resetPasswordSchema = {
   additionalProperties: false,
 };
 
-console.log(ajv.formats);
-
 export const validateAuthData = ajv.compile(authSchema);
 export const validateForgetPasswordData = ajv.compile(forgetPasswordSchema);
 export const validateResetPasswordSchema = ajv.compile(resetPasswordSchema);

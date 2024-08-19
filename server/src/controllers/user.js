@@ -4,7 +4,7 @@ import { NotFoundError, ProgrammingError } from "../utils/exceptions.js";
 async function getUserController(req, res, next) {
   try {
     const { user_id } = req.params;
-    console.log(user_id);
+    console.error(user_id);
     if (!user_id) {
       return next(new ValidationError("User invalid"));
     }
@@ -21,7 +21,7 @@ async function getUserController(req, res, next) {
       get_user,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return next(new ProgrammingError());
   }
 }

@@ -12,7 +12,7 @@ async function getUserByEmail(email) {
 
     return get_user;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new DatabaseError("Error getting user by email");
   }
 }
@@ -40,7 +40,7 @@ async function findUserByEmailOrPhone(emailOrPhone) {
 
     return user;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new DatabaseError("Failed to find user");
   }
 }
@@ -59,7 +59,7 @@ async function updateUserPassword(user_id, new_password) {
 
     return user;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new DatabaseError("Failed to update user password");
   }
 }

@@ -14,7 +14,7 @@ async function isTokenBlacklisted(token, type = "refresh") {
 
     return false;
   } catch (error) {
-    console.log("Error checking if token is blacklisted:", error);
+    console.error("Error checking if token is blacklisted:", error);
     throw new DatabaseError("Failed to check if token is blacklisted");
   }
 }
@@ -81,7 +81,7 @@ async function createPasswordResetToken(user_id) {
 
     return resetToken;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new DatabaseError("Failed to create password reset token");
   }
 }
@@ -96,7 +96,7 @@ async function findPasswordResetToken(token) {
 
     return found_token;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new DatabaseError("Failed to find reset token");
   }
 }

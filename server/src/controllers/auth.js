@@ -36,6 +36,7 @@ async function signUpController(req, res, next) {
     try {
       const sign_up = await signUp(email, hashedPassword);
     } catch (error) {
+      console.error(error);
       return next(new SignupError("User already exists"));
     }
 
@@ -44,7 +45,7 @@ async function signUpController(req, res, next) {
       message: "Created user",
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return next(new ProgrammingError());
   }
 }

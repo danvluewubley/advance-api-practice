@@ -60,7 +60,7 @@ async function refreshTokens(refreshToken) {
 
     return { newAccessToken, newRefreshToken, refreshToken };
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new ProgrammingError("Error logging user in");
   }
 }
@@ -82,7 +82,7 @@ async function refreshAccessToken(refreshToken) {
 
     return { newAccessToken };
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new ProgrammingError("Error refreshing access token");
   }
 }

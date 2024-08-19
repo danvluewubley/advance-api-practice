@@ -60,7 +60,7 @@ async function handleForgotPassword(emailOrPhone) {
     //     await sendResetSMS(user.phone, resetToken);
     //   }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new ProgrammingError("Error handling forgot password");
   }
 }
@@ -82,7 +82,7 @@ async function resetPassword(token, new_password) {
 
     return { message: "Password has been reset" };
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new ProgrammingError("Error resetting password");
   }
 }
@@ -99,7 +99,7 @@ async function changePassword(email, new_password) {
 
     return { message: "Password has been reset" };
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new ProgrammingError("Error resetting password");
   }
 }

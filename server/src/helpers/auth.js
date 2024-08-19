@@ -38,7 +38,7 @@ export const signToken = (user, type) => {
 
     return token;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new ProgrammingError("Error signing token");
   }
 };
@@ -61,7 +61,7 @@ export const generateRefreshToken = async (user) => {
 
     return refreshToken;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new AuthError("Error creating refresh token");
   }
 };
