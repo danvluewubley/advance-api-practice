@@ -2,7 +2,7 @@ import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
 const ajv = new Ajv();
-addFormats(ajv)
+addFormats(ajv);
 
 const authSchema = {
   type: "object",
@@ -48,6 +48,8 @@ const resetPasswordSchema = {
   required: ["token", "newPassword"],
   additionalProperties: false,
 };
+
+console.log(ajv.formats);
 
 export const validateAuthData = ajv.compile(authSchema);
 export const validateForgetPasswordData = ajv.compile(forgetPasswordSchema);

@@ -20,6 +20,12 @@ class AuthError extends AppError {
   }
 }
 
+class SignupError extends AppError {
+  constructor(message) {
+    super(message || "Signup Error", 409);
+  }
+}
+
 class NotFoundError extends AppError {
   constructor(message) {
     super(message || "Resource Not Found", 404);
@@ -57,4 +63,5 @@ export {
   DatabaseError,
   ProgrammingError,
   EmailError,
+  SignupError,
 };

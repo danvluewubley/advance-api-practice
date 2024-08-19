@@ -19,6 +19,9 @@ function Login() {
       console.log("successful", response);
     } catch (error) {
       console.error(error);
+    } finally {
+      setEmail("");
+      setPassword("");
     }
   };
 
@@ -30,6 +33,7 @@ function Login() {
         id="email"
         name="email"
         onChange={(event) => setEmail(event.target.value)}
+        data-test-id="email-input"
       />
       <label htmlFor="password">Password</label>
       <input
@@ -37,8 +41,9 @@ function Login() {
         id="password"
         name="password"
         onChange={(event) => setPassword(event.target.value)}
+        data-test-id="password-input"
       />
-      <button type="submit" onClick={handleLogin}>
+      <button type="submit" onClick={handleLogin} data-test-id="login-button">
         Login
       </button>
     </div>

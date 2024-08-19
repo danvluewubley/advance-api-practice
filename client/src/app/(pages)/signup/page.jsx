@@ -30,6 +30,7 @@ function Signup() {
         id="email"
         name="email"
         onChange={(event) => setEmail(event.target.value)}
+        data-test-id="email-input"
       />
       <label htmlFor="password">Password</label>
       <input
@@ -37,8 +38,9 @@ function Signup() {
         id="password"
         name="password"
         onChange={(event) => setPassword(event.target.value)}
+        data-test-id="password-input"
       />
-      <button type="submit" onClick={handleLogin}>
+      <button type="submit" onClick={handleLogin} data-test-id="signup-button">
         Signup
       </button>
     </div>

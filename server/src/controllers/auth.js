@@ -18,6 +18,7 @@ import {
   ProgrammingError,
   ValidationError,
   AuthError,
+  SignupError,
 } from "../utils/exceptions.js";
 
 async function signUpController(req, res, next) {
@@ -31,7 +32,12 @@ async function signUpController(req, res, next) {
     }
 
     const hashedPassword = await hashPassword(password);
-    const sign_up = await signUp(email, hashedPassword);
+
+    try {
+      const sign_up = await signUp(email, hashedPassword);
+    } catch (error) {
+      return next(new SignupError("User already exists"));
+    }
 
     return res.status(201).json({
       success: true,
@@ -53,28 +59,29 @@ async function loginController(req, res, next) {
       return next(new ValidationError("Password or Email invalid"));
     }
 
-    const tokens = await loginService(email, password);
+    try {
+      const tokens = await loginService(email, password);
+      
+      console.log(tokens);
+      res.cookie(ACCESS_TOKEN_NAME, tokens.access_token, {
+        httpOnly: true,
+        secure: true,
+        path: "/",
+      });
 
-    if (!tokens) {
+      res.cookie(REFRESH_TOKEN_NAME, tokens.refresh_token, {
+        httpOnly: true,
+        secure: true,
+        path: "/",
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "User login success",
+      });
+    } catch (error) {
       return next(new AuthError("Password or Email invalid"));
     }
-    console.log(tokens);
-    res.cookie(ACCESS_TOKEN_NAME, tokens.access_token, {
-      httpOnly: true,
-      secure: true,
-      path: "/",
-    });
-
-    res.cookie(REFRESH_TOKEN_NAME, tokens.refresh_token, {
-      httpOnly: true,
-      secure: true,
-      path: "/",
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "User login success",
-    });
   } catch (error) {
     console.log(error);
     return next(new ProgrammingError());
