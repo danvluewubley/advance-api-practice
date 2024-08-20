@@ -20,15 +20,10 @@ import crypto from "crypto";
 async function loginService(email, password) {
   try {
     const user = await getUserByEmail(email);
-
-    if (!user) {
-      throw new AuthError("Invalid email");
-    }
-
     const compare_password = await verifyPassword(user.password, password);
 
-    if(!compare_password) {
-      throw new AuthError("Invalid password");
+    if(!compare_password || !user) {
+      throw new AuthError("Invalid password or user");
     }
 
     const access_token = await generateAccessToken(user);

@@ -6,7 +6,7 @@ describe("Signup Test", () => {
 
     cy.url().should("include", "/signup");
 
-    cy.get('[data-test-id="email-input"]').type("test7@gmail.com");
+    cy.get('[data-test-id="email-input"]').type("test10@gmail.com");
 
     cy.get('[data-test-id="password-input"]').type("test1111");
 
